@@ -17,6 +17,7 @@ public class Main {
         System.out.println(sum_myNums);
         System.out.println(resultMinus);
         System.out.println(resultDivide);
+        
     }
 }
 
