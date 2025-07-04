@@ -2,47 +2,106 @@ package come.gogle.nicat;
 
 public class Main {
     public static void main(String[] args) {
-        MathUnits mathUnits = new MathUnits();
+        Animal[] zoo = {
+                new Lion("Nidjat"),
+                new Parrot("Shahriyar"),
+                new Tiger("Jamil")
+        };
 
-        int my_number = mathUnits.add(5, 10, 15);
-        int my_number2 = mathUnits.add(2, 100, 30);
-        int sum_myNums = my_number + my_number2;
-        mathUnits.multpl(10, 5, -4);
-
-        int resultMinus = mathUnits.minus(50, 20, 5);
-        double resultDivide = mathUnits.divide(100, 2);
-
-        System.out.println(my_number);
-        System.out.println(my_number2);
-        System.out.println(sum_myNums);
-        System.out.println(resultMinus);
-        System.out.println(resultDivide);
-        
+        for (Animal a : zoo) {
+            System.out.println("Type: " + a.getClass().getSimpleName());
+            a.showInfo();
+            a.makeSound();
+            a.move();
+            a.eat();
+            System.out.println("----------");
+        }
     }
 }
 
-class MathUnits {
-    int add(int a, int b, int c) {
-        int sum = a + b + c;
-        return sum;
+class Animal {
+    protected String name;
+
+    public Animal(String name) {
+        this.name = name;
     }
 
-    void multpl(int x, int y, int z) {
-        int product = x * y * z;
-        System.out.println(product);
+    public void makeSound() {
+        System.out.println("Some animal sound");
     }
 
-    int minus(int a, int b, int c) {
-        int result = a - b - c;
-        return result;
+    public void move() {
+        System.out.println("Animal is moving");
     }
 
-    double divide(int a, int b) {
-        if (b != 0) {
-            return (double) a / b;
-        } else {
-            System.out.println("На ноль делить нельзя!");
-            return 0;
-        }
+    public void eat() {
+        System.out.println("Animal is eating");
+    }
+
+    public void showInfo() {
+        System.out.println("Name: " + name);
+    }
+}
+
+class Lion extends Animal {
+    public Lion(String name) {
+        super(name);
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Lion roars");
+    }
+
+    @Override
+    public void move() {
+        System.out.println("Lion runs fast");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("Lion eats meat");
+    }
+}
+
+class Parrot extends Animal {
+    public Parrot(String name) {
+        super(name);
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Parrot says: hello");
+    }
+
+    @Override
+    public void move() {
+        System.out.println("Parrot flies");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("Parrot pecks seeds");
+    }
+}
+
+class Tiger extends Animal {
+    public Tiger(String name) {
+        super(name);
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Tiger growls");
+    }
+
+    @Override
+    public void move() {
+        System.out.println("Tiger walks silently");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("Tiger eats deer");
     }
 }
